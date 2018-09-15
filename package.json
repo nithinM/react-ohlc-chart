@@ -62,10 +62,14 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@types/react": "^16.4.13",
+    "axios": "^0.18.0",
     "compression": "^1.7.3",
     "country-list": "^1.1.0",
     "express": "^4.16.3",
     "firebase": "^5.4.0",
+    "moment": "^2.22.2",
+    "moment-range": "^4.0.1",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
