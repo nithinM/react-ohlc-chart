@@ -39,7 +39,7 @@ const ModalSymbol = ({
         onClick={handleClose}
         color="primary"
       >
-        Cancel
+        Close
       </Button>
     </DialogActions>
   </Dialog>

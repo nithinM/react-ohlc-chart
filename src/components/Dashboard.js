@@ -11,6 +11,9 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import Tooltip from "@material-ui/core/Tooltip";
 import styles from "../theme";
 import { timeSeriesDailyApi, getNasdaqSymbolsApi } from "../utils/apiFetch";
 import OhlcChart from "../utils/ohlcChart";
@@ -78,6 +81,7 @@ class Dashboard extends React.Component {
 
   handleClickOpen = () => {
     this.setState({ modalSymbolOpen: true });
+    // this.fetchSymbols();
   };
 
   handleClose = () => {
@@ -136,11 +140,7 @@ class Dashboard extends React.Component {
               <main className={classes.content}>
                 {symbolList && selectSymbol ? (
                   <Card
-                    className={classNames(
-                      classes.card,
-                      classes.cardFullHeight,
-                      classes.cardCenterContent
-                    )}
+                    className={classNames(classes.card, classes.cardFullHeight)}
                   >
                     <CardContent className={classes.CardContentFull}>
                       <Typography variant="headline">
@@ -170,6 +170,17 @@ class Dashboard extends React.Component {
             apiSymbolData={apiSymbolData}
             symbolList={symbolList}
           />
+          <Tooltip title="Modify Company list" placement="left">
+            <Button
+              variant="fab"
+              color="primary"
+              aria-label="Modify Company list"
+              className={classes.buttonFab}
+              onClick={this.fetchSymbols}
+            >
+              <AddIcon />
+            </Button>
+          </Tooltip>
         </div>
       </React.Fragment>
     );

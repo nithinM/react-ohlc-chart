@@ -98,6 +98,12 @@ const styles = theme => ({
     textAlign: "center",
     width: "100%",
     height: "100%"
+  },
+  buttonFab: {
+    margin: theme.spacing.unit,
+    position: "absolute",
+    bottom: 30,
+    right: 30
   }
 });
 

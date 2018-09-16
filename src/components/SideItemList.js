@@ -4,6 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List/List";
 import Divider from "@material-ui/core/Divider/Divider";
+import Typography from "@material-ui/core/Typography";
 
 const SideItemList = ({ symbolList, handleListClick }) => (
   <List dense>
@@ -19,7 +20,10 @@ const SideItemList = ({ symbolList, handleListClick }) => (
               })
             }
           >
-            <ListItemText primary={symbolList[item].label} />
+            {/*<ListItemText primary={symbolList[item].label} />*/}
+            <Typography variant="body1" noWrap>
+              {symbolList[item].label}
+            </Typography>
           </ListItem>
           <Divider />
         </React.Fragment>
