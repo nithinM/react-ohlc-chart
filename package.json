@@ -1,7 +1,7 @@
 {
-  "name": "boostedboards",
+  "name": "react-ohlc-chart",
   "version": "1.0.0",
-  "description": "UX Front End Developer Challenge",
+  "description": "BAMBU Frontend Engineer Test",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -12,7 +12,7 @@
     "lint": "eslint 'src/**/*.js'",
     "precommit": "lint-staged"
   },
-  "author": "Nithin Madhuranga",
+  "author": "Nithin Madhuranga <nithin@axis.lk>",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.1.0",
@@ -68,24 +68,13 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "compression": "^1.7.3",
-    "country-list": "^1.1.0",
-    "express": "^4.16.3",
-    "firebase": "^5.4.0",
     "moment": "^2.22.2",
     "moment-range": "^4.0.1",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
-    "react-credit-card-primitives": "^1.5.0",
     "react-dom": "^16.4.2",
-    "react-input-mask": "^2.0.3",
-    "react-media": "^1.8.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-select": "^2.0.0",
-    "react-tippy": "^1.2.2",
-    "redux": "^4.0.0",
-    "validator": "^10.5.0"
+    "react-select": "^2.0.0"
   },
   "babel": {
     "presets": "./babel.config.js"
