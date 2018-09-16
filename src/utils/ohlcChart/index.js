@@ -13,7 +13,8 @@ class OhlcChart extends React.Component {
     super(props);
     this.state = {
       drawingWidth: 0,
-      drawingHeight: 0
+      drawingHeight: 0,
+      hasError: false
     };
     this.svgRef = React.createRef();
   }
@@ -70,6 +71,11 @@ class OhlcChart extends React.Component {
     return acc.map(m => m.format("YYYY-MM-DD"));
   };
 
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true });
+    console.log(error, info); // eslint-disable-line no-console
+  }
+
   render() {
     const {
       apiData,
@@ -81,13 +87,13 @@ class OhlcChart extends React.Component {
       paddingLeft
     } = this.props;
 
-    const { drawingHeight, drawingWidth } = this.state;
+    const { drawingHeight, drawingWidth, hasError } = this.state;
 
     const svgStyle = {
       padding: `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`
     };
 
-    if (Object.keys(apiData).length > 0) {
+    if (Object.keys(apiData).length > 0 && !hasError) {
       const yMinVal = this.getMinY(apiData);
       const yMaxVal = this.getMaxY(apiData);
       const apiDataDatesArray = Object.keys(apiData);
@@ -135,7 +141,7 @@ class OhlcChart extends React.Component {
                     y2={drawingHeight + 5}
                     fill="none"
                     shapeRendering="crispEdges"
-                    stroke="#444"
+                    stroke="#666"
                     strokeWidth="1"
                   />
                 );
@@ -154,8 +160,8 @@ class OhlcChart extends React.Component {
                     key={item}
                     x={(index + 1) * xGridGap}
                     y={drawingHeight + 20}
-                    fill="#444"
-                    fontFamily="Arial"
+                    fill="#666"
+                    fontFamily="Roboto"
                     fontSize="12px"
                     textAnchor="middle"
                     date={item}
@@ -181,7 +187,7 @@ class OhlcChart extends React.Component {
                 }
                 fill="none"
                 shapeRendering="crispEdges"
-                stroke="#444"
+                stroke="#666"
                 strokeWidth="1"
               />
             ))}
@@ -193,8 +199,8 @@ class OhlcChart extends React.Component {
                 key={item}
                 x="-10"
                 y={drawingHeight - index * (drawingHeight / yAxisValues.length)}
-                fill="#444"
-                fontFamily="Arial"
+                fill="#666"
+                fontFamily="Roboto"
                 fontSize="12px"
                 textAnchor="end"
               >
@@ -205,14 +211,14 @@ class OhlcChart extends React.Component {
 
           <path
             d={`M 0 ${drawingHeight} l ${drawingWidth - 80} 0`}
-            stroke="black"
+            stroke="#666"
             strokeWidth="1"
             fill="none"
           />
 
           <path
             d={`M 0 0 L 0 ${drawingHeight}`}
-            stroke="black"
+            stroke="#666"
             strokeWidth="1"
             fill="none"
           />
@@ -239,6 +245,7 @@ class OhlcChart extends React.Component {
 }
 
 OhlcChart.defaultProps = {
+  apiData: {},
   chartWidth: "75%",
   chartHeight: "75%",
   paddingTop: 20,
@@ -248,7 +255,7 @@ OhlcChart.defaultProps = {
 };
 
 OhlcChart.propTypes = {
-  apiData: PropTypes.shape({}).isRequired,
+  apiData: PropTypes.shape({}),
   chartWidth: PropTypes.string,
   chartHeight: PropTypes.string,
   paddingTop: PropTypes.number,
