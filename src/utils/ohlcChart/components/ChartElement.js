@@ -25,8 +25,8 @@ const ChartElement = ({
       const strokeColor =
         parseFloat(apiData[date]["1. open"]) >
         parseFloat(apiData[date]["4. close"])
-          ? "red"
-          : "green";
+          ? "#f50057"
+          : "#4caf50";
       return (
         <path
           key={date}
@@ -48,8 +48,8 @@ const ChartElement = ({
 ChartElement.propTypes = {
   apiData: PropTypes.shape({}).isRequired,
   drawingHeight: PropTypes.number.isRequired,
-  yAxisValues: PropTypes.number.isRequired,
-  xAxisValues: PropTypes.number.isRequired,
+  yAxisValues: PropTypes.arrayOf(PropTypes.any).isRequired,
+  xAxisValues: PropTypes.arrayOf(PropTypes.any).isRequired,
   xGridGap: PropTypes.number.isRequired
 };
 

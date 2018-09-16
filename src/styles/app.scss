@@ -1,11 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+
 html,
 body,
 #main-app {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
-svg {
-  padding: 20px 30px 30px 50px;
-  //margin-top: 20px;
+body {
+  font-family: "Roboto", sans-serif;
 }
